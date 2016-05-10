@@ -7,11 +7,14 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,11 +24,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.Map;
 
 import at.vcity.androidim.interfaces.IAppManager;
 import at.vcity.androidim.services.IMService;
@@ -136,6 +146,22 @@ public class ProfileEdit extends Activity implements View.OnClickListener {
             }
             case DELETE_ACCOUNT:
             {
+                String FirstDeletion = CurUserKey.concat("zza");
+                try{new DeleteImage(FirstDeletion).execute().get();}
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String SecDeletion = CurUserKey.concat("zzb");
+                try{new DeleteImage(SecDeletion).execute().get();}
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String ThirdDeletion = CurUserKey.concat("zzc");
+                try{new DeleteImage(ThirdDeletion).execute().get();}
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+
                 Thread thread = new Thread(){
                     public void run() {
                         try {//The action is performed within if statement
@@ -146,23 +172,19 @@ public class ProfileEdit extends Activity implements View.OnClickListener {
 
                                     public void run() {
                                         Toast.makeText(getApplicationContext(),"Cannot be deleted", Toast.LENGTH_LONG).show();
-
                                     }
-
                                 });
                             }
-                            Intent i = new Intent(ProfileEdit.this, Login.class);
 
-                            startActivity(i);
                         } catch(UnsupportedEncodingException e) {
                             e.printStackTrace();
                         }
                     }
                 };
                 thread.start();
+                Intent i = new Intent(ProfileEdit.this, Login.class);
+                startActivity(i);
                 Toast.makeText(getApplicationContext(),"Account deleted", Toast.LENGTH_LONG).show();
-
-
             }
         }
 
@@ -177,6 +199,16 @@ public class ProfileEdit extends Activity implements View.OnClickListener {
         i.putExtra("photo_id", Concac);
         startActivity(i);
     }
+
+    public void firstDeleteClick(View view){
+        String Concac;
+        Concac = CurUserKey.concat("zza");
+        Context context = view.getContext();
+        Intent i = new Intent(context, ImagePopUp.class);
+        i.putExtra("photo_id", Concac);
+        startActivity(i);
+    }
+
 
     public void SecondAddClick(View view){
         String Concac;
@@ -385,5 +417,78 @@ public class ProfileEdit extends Activity implements View.OnClickListener {
             }
             bitmapd2 = bitmap;
         }
+    }
+
+    private class DeleteImage extends AsyncTask<Void, Void, String> {
+        Bitmap image;
+        String name;
+
+        public DeleteImage(String name){
+            this.name = name;
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            Map<String,String> dataToSend = new HashMap<>();
+           // dataToSend.put("image",encodedImage);
+            dataToSend.put("name", name);
+
+            String encodedStr = getEncodedData(dataToSend);
+
+            BufferedReader reader = null;
+
+            try {
+                URL url = new URL(Secret.photoDelete);
+
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setRequestMethod("POST");
+
+                con.setDoOutput(true);
+                OutputStreamWriter writer = new OutputStreamWriter(con.getOutputStream());
+                writer.write(encodedStr);
+                writer.flush();
+
+                StringBuilder sb = new StringBuilder();
+                reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+                String line;
+                while((line = reader.readLine()) != null) {
+                    sb.append(line + "\n");
+                }
+                line = sb.toString();
+                Log.i("custom_check", "The values received in the store part are as follows:");
+                Log.i("custom_check",line);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if(reader != null) {
+                    try {
+                        reader.close();     //Closing the
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            return encodedStr;
+        }
+    }
+
+    private String getEncodedData(Map<String,String> data) {
+        StringBuilder sb = new StringBuilder();
+        for(String key : data.keySet()) {
+            String value = null;
+            try {
+                value = URLEncoder.encode(data.get(key), "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            if(sb.length()>0)
+                sb.append("&");
+
+            sb.append(key + "=" + value);
+        }
+        return sb.toString();
     }
 }

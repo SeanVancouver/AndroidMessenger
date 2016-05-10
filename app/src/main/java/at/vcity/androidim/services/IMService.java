@@ -273,6 +273,8 @@ public class IMService extends Service implements IAppManager, IUpdateData {
 							Log.i("friend list broadcast sent ", "");
 
 							if (tmp2 != null) {
+								i2.putExtra(MessageInfo.MESSAGE_LIST, tmp2);
+								sendBroadcast(i2);
 							}
 						} else {
 							Log.i("friend list returned null", "");
