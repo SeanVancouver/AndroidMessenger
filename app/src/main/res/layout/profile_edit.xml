@@ -35,6 +35,13 @@
             android:layout_height="34dp"
             android:onClick="firstAddClick"
             />
+        <Button
+            android:id="@+id/Delete1"
+            android:text="Delete"
+            android:layout_width="70dp"
+            android:layout_height="34dp"
+            android:onClick="firstDeleteClick"
+            />
 
         <ImageView
             android:id="@+id/ImageHolder1"
@@ -51,6 +58,13 @@
             android:layout_height="34dp"
             android:onClick="SecondAddClick"
             />
+        <Button
+            android:id="@+id/Delete2"
+            android:text="Delete"
+            android:layout_width="70dp"
+            android:layout_height="34dp"
+            android:onClick="secDeleteClick"
+            />
 
         <ImageView
             android:id="@+id/ImageHolder2"
@@ -66,6 +80,13 @@
             android:layout_width="70dp"
             android:layout_height="34dp"
             android:onClick="ThirdAddClick"
+            />
+        <Button
+            android:id="@+id/Delete3"
+            android:text="Delete"
+            android:layout_width="70dp"
+            android:layout_height="34dp"
+            android:onClick="thirdDeleteClick"
             />
 
         <TextView
