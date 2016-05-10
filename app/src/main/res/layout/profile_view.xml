@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="profile of:"
+        android:id="@+id/textView13" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chat"
+        android:id="@+id/chatbutton"
+        android:layout_gravity="right"
+        android:onClick="onChatClick"
+        />
+
+    <ImageView
+        android:id="@+id/ImageHolder"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="#FFF8DC"
+        android:padding="1dp"
+        android:onClick="onImageClick"
+        />
+
+    <ImageView
+        android:id="@+id/ImageHolder1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="#7FFFD4"
+        android:padding="1dp"
+        android:onClick="onImageClick1"
+        />
+
+    <ImageView
+        android:id="@+id/ImageHolder2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="#00CED1"
+        android:padding="1dp"
+        android:onClick="onImageClick2"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Age"
+        android:id="@+id/textViewAge" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextAgeV" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sex"
+        android:id="@+id/textViewSex" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextSexV" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Bio"
+        android:id="@+id/textViewBio" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextBioV" />
+
+</LinearLayout>
+
+    </ScrollView>

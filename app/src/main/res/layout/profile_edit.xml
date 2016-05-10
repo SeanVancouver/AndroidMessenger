@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="profile of:"
+            android:id="@+id/textView13" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText" />
+
+        <ImageView
+            android:id="@+id/ImageHolder"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="#FFF8DC"
+            android:padding="1dp"
+            android:onClick="onImageClick"
+            />
+        <Button
+            android:id="@+id/Add1"
+            android:text="Add"
+            android:layout_width="70dp"
+            android:layout_height="34dp"
+            android:onClick="firstAddClick"
+            />
+
+        <ImageView
+            android:id="@+id/ImageHolder1"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="#7FFFD4"
+            android:padding="1dp"
+            android:onClick="onImageClick1"
+            />
+        <Button
+            android:id="@+id/Add2"
+            android:text="Add"
+            android:layout_width="70dp"
+            android:layout_height="34dp"
+            android:onClick="SecondAddClick"
+            />
+
+        <ImageView
+            android:id="@+id/ImageHolder2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="#00CED1"
+            android:padding="1dp"
+            android:onClick="onImageClick2"
+            />
+        <Button
+            android:id="@+id/Add3"
+            android:text="Add"
+            android:layout_width="70dp"
+            android:layout_height="34dp"
+            android:onClick="ThirdAddClick"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Age"
+            android:id="@+id/textViewAge" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextAge" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Sex"
+            android:id="@+id/textViewSex" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextSex" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Bio"
+            android:id="@+id/textViewBio" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextBio" />
+
+        <Button
+            android:id="@+id/updateProfile"
+            android:text="update"
+            android:layout_width="80dp"
+            android:layout_height="34dp"
+            android:onClick="updateProfileClick"
+            />
+    </LinearLayout>
+
+</ScrollView>
