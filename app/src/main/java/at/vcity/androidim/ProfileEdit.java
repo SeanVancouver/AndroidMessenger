@@ -60,8 +60,6 @@ public class ProfileEdit extends Activity implements View.OnClickListener {
     public static final int FRIENDLIST_PG = Menu.FIRST;
     public static final int DELETE_ACCOUNT = Menu.FIRST+1;
     public TextView ProfileOf;
-    String changeFromCloneOverride;
-
 
 
     private ServiceConnection mConnection = new ServiceConnection() {
