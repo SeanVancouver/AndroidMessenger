@@ -78,7 +78,6 @@ public class FriendList extends Activity
 		public FriendListAdapter(Context context, int resource) {
 			this.context = context;
 			mInflater = LayoutInflater.from(context);
-
 			mOnlineIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.greenstar);
 			mOfflineIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.redstar);
 		}
@@ -88,18 +87,15 @@ public class FriendList extends Activity
 			this.friends = friends;
 		}
 
-
 		public int getCount() {
 			return friends.length; //issue
 		}
-
 
 		public FriendInfo getItem(int position) {
 			return friends[position];
 		}
 
 		public long getItemId(int position) {
-
 			return 0;
 		}
 
@@ -250,7 +246,6 @@ public class FriendList extends Activity
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item)
 	{
-
 		switch(item.getItemId())
 		{
 			case SIGN_UP_ID:
@@ -286,10 +281,12 @@ public class FriendList extends Activity
 		return super.onMenuItemSelected(featureId, item);
 	}
 
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 	}
+
 
 	protected void onCreate(Bundle savedInstanceState)
 	{
