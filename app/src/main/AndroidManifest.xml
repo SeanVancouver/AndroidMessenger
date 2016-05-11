@@ -17,7 +17,8 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-    <activity android:name=".FriendList">
+    <activity android:name=".FriendList"
+		android:parentActivityName=".Login">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"></action>
 				<category
@@ -33,7 +34,8 @@
 				</category>
 			</intent-filter>
 		</activity>
-		<activity android:name=".Messaging">
+		<activity android:name=".Messaging"
+			android:parentActivityName=".Profile">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"></action>
 				<category
@@ -73,7 +75,8 @@
 		</activity>
 
 		<activity android:name=".ImagePopUp"
-			android:theme="@style/Theme.AppCompat">
+			android:theme="@style/Theme.AppCompat"
+			>
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"></action>
 				<category
@@ -83,18 +86,12 @@
 		</activity>
 
 	<activity android:name=".SignUp"
+		android:parentActivityName=".Login"
 		><intent-filter><action android:name="android.intent.action.MAIN"></action>
 <category android:name="android.intent.category.NORMAL"></category>
 </intent-filter>
 </activity>
-<activity android:name=".AddFriend"><intent-filter><action android:name="android.intent.action.MAIN"></action>
-<category android:name="android.intent.category.NORMAL"></category>
-</intent-filter>
-</activity>
-<activity android:name=".UnApprovedFriendList"><intent-filter><action android:name="android.intent.action.MAIN"></action>
-<category android:name="android.intent.category.NORMAL"></category>
-</intent-filter>
-</activity>
+
 </application>
 
 

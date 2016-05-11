@@ -61,7 +61,10 @@ public class ProfileEdit extends Activity implements View.OnClickListener {
     public static final int DELETE_ACCOUNT = Menu.FIRST+1;
     public TextView ProfileOf;
 
+
+
     private ServiceConnection mConnection = new ServiceConnection() {
+
 
 
         public void onServiceConnected(ComponentName className, IBinder service) {
@@ -198,15 +201,7 @@ public class ProfileEdit extends Activity implements View.OnClickListener {
         Intent i = new Intent(context, ImagePopUp.class);
         i.putExtra("photo_id", Concac);
         startActivity(i);
-    }
-
-    public void firstDeleteClick(View view){
-        String Concac;
-        Concac = CurUserKey.concat("zza");
-        Context context = view.getContext();
-        Intent i = new Intent(context, ImagePopUp.class);
-        i.putExtra("photo_id", Concac);
-        startActivity(i);
+        finish();
     }
 
 
@@ -217,6 +212,7 @@ public class ProfileEdit extends Activity implements View.OnClickListener {
         Intent i = new Intent(context, ImagePopUp.class);
         i.putExtra("photo_id", Concac);
         startActivity(i);
+        finish();
     }
 
     public void ThirdAddClick(View view){
@@ -490,5 +486,23 @@ public class ProfileEdit extends Activity implements View.OnClickListener {
             sb.append(key + "=" + value);
         }
         return sb.toString();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
+        //Intent setIntent = new Intent(Intent.ACTION_MAIN);
+         //setIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        //setIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        //startActivity(setIntent);
+
+        finish();
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

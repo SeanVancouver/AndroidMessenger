@@ -48,7 +48,6 @@ public class ImagePopUp extends AppCompatActivity {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
         CurrentUserId = getIntent().getExtras().getString("photo_id");
-
     }
 
 
@@ -64,11 +63,19 @@ public class ImagePopUp extends AppCompatActivity {
 
     public void onConfirmClick(View view){
         Bitmap image = ((BitmapDrawable) ImageHolder.getDrawable()).getBitmap();
-        //::15:30 This upload onto the server
+
         new UploadImage(image,CurrentUserId).execute();
 
-        Intent intent = new Intent(this, ProfileEdit.class);
-       startActivity(intent);
+       // Intent intent = new Intent(this, ProfileEdit.class);
+     //  startActivity(intent);
+
+        /*
+        Intent setIntent = new Intent(Intent.ACTION_MAIN);
+        setIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(setIntent);
+        */
+
     }
 
     private class UploadImage extends AsyncTask<Void, Void, Void> {
@@ -133,6 +140,11 @@ public class ImagePopUp extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             Toast.makeText(getApplicationContext(), "Image Uploaded", Toast.LENGTH_SHORT).show();
+
+            Intent i = new Intent(ImagePopUp.this,ProfileEdit.class);
+           // i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
+            finish();
         }
     }
 
@@ -152,5 +164,11 @@ public class ImagePopUp extends AppCompatActivity {
             sb.append(key + "=" + value);
         }
         return sb.toString();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

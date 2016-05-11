@@ -50,9 +50,8 @@ public class Login extends Activity {
             //So this allows user to bypass login?
             if (imService.isUserAuthenticated() == true)
             {
-            	Intent i = new Intent(Login.this, FriendList.class);																
+            	Intent i = new Intent(Login.this, FriendList.class);
 				startActivity(i);
-				Login.this.finish();
             }
         }
         public void onServiceDisconnected(ComponentName className) {

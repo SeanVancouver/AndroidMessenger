@@ -18,6 +18,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -284,4 +285,5 @@ public class Messaging extends Activity {
 
 		return super.onMenuItemSelected(featureId, item);
 	}
+
 }
